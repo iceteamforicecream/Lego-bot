@@ -164,6 +164,12 @@ int main()
    		mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
         msleep(10);
+    while(abs(gmpc(0))<turnright)
+          {
+        mav(rightwheel,-rightspeed);
+        mav(leftwheel,leftspeed);
+        msleep(10);
+    }
     while(abs(gmpc(0))<stackcube)
     {
         mav(rightwheel,rightspeed);
@@ -174,8 +180,17 @@ int main()
         mav(leftwheel,-leftspeed);
         msleep(10);
     set_servo_position(claw,open);
+        msleep(10);
+    set_servo_position(arm,up);
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,leftspeed);
         msleep(10);
+    set_servo_position(arm,down);
+    while(abs(gmpc(0))<)
+    {
+        mav(rightwheel,-rightspeed);
+        mav(leftwheel,-leftspeed);
+        msleep(10);
+    }
     return 0;
 }
