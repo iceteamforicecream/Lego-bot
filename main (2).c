@@ -2,7 +2,7 @@
 
 int main()
 {
-    wait_for_light(0);
-    shut_down_in(1900);
+    wait_for_light(1);
+    shut_down_in(19000);
     return 0;
 }
