@@ -9,7 +9,9 @@ int arm=3;
 int claw=1;
 int up=650;
 int down=1190;
-int cube=1110;
+int cubeheight=1110;
+int stackheight=1000;
+int abovecubes=600;
 int close=600;
 int open=50;
 int cubeclose=1700;
@@ -22,9 +24,10 @@ int blackline=3850;
 int linedistance=14000;
 int lineupwithcube1=600;
 int lineupwithcube=1000;
+int lineupwithcube4=600;
 int getcube=3500;
-int returntoline=1000;
-int returntoline2=1200;
+int cubeonline=1000;
+int cubepassline=1200;
 int stackcube=4000;
 
 int main()
@@ -37,7 +40,8 @@ int main()
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    set_servo_position(arm,cube);
+    set_servo_position(arm,cubeheight);
+    set_servo_position(claw,cubeopen);
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
@@ -53,7 +57,7 @@ int main()
         msleep(10);
     }
     set_servo_position(claw,close);
-    	msleep(5);
+    	msleep(50);
     	cmpc(0);
     while(analog(0)<blackline)
     {
@@ -62,16 +66,17 @@ int main()
         msleep(10);
     }
     cmpc(0);
-    while(abs(gmpc(0))<returntoline)
+    while(abs(gmpc(0))<cubeonline)
     {
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    set_servo_position(claw,open);
+    set_servo_position(claw,cubeopen);
+        msleep(50);
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
-        msleep(10);
+        msleep(500);
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
@@ -106,7 +111,8 @@ int main()
         mav(leftwheel,leftspeed);
         msleep(10);
     }
-    set_servo_position(claw,close);
+    set_servo_position(claw,cubeclose);
+        msleep(50);
     while(analog(0)<blackline)
     {
         mav(rightwheel,-rightspeed);
@@ -114,16 +120,17 @@ int main()
         msleep(10);
     }
     cmpc(0);
-    while(abs(gmpc(0))<returntoline)
+    while(abs(gmpc(0))<cubeonline)
     {
         mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    set_servo_position(claw,open);
+    set_servo_position(claw,cubeopen);
+        msleep(50);
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
-        msleep(10);
+        msleep(500);
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
@@ -158,7 +165,8 @@ int main()
         mav(leftwheel,leftspeed);
         msleep(10);
     }
-    set_servo_position(claw,close);
+    set_servo_position(claw,cubeclose);
+        msleep(50);
     while(analog(0)<blackline)
     {
         mav(rightwheel,-rightspeed);
@@ -166,7 +174,7 @@ int main()
         msleep(10);
     }
     cmpc(0);
-   	while(abs(gmpc(0))<returntoline2)
+   	while(abs(gmpc(0))<cubepassline)
     {
         mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
@@ -177,6 +185,68 @@ int main()
     {
         mav(rightwheel,-rightspeed);
         mav(leftwheel,leftspeed);
+        msleep(10);
+    }
+    ser_servo_position(arm,stackheight)
+    cmpc(0);
+    while(abs(gmpc(0))<stackcube)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,leftspeed);
+        msleep(10);
+    }
+    set_servo_position(claw,cubeopen);
+    	msleep(50);
+    set_servo_position(arm,abovecubes);
+        msleep(50);
+    cmpc(0);
+    while(abs(gmpc(0))<lineupwithcube4)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,leftspeed);
+        msleep(10);
+    }
+    set_servo_position(arm,cubeheight);
+    cmpc(0);
+    while(abs(gmpc(0))<turnleft)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,-leftspeed);
+        msleep(10);
+    }
+    while(analog(0)<blackline)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,leftspeed);
+        msleep(10);
+    }
+    cmpc(0);
+    while(abs(gmpc(0))<getcube)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,leftspeed);
+        msleep(10);
+    }
+    set_servo_position(claw,cubeclose);
+    msleep(50);
+    while(analog(0)<blackline)
+    {
+        mav(rightwheel,-rightspeed);
+        mav(leftwheel,-leftspeed);
+        msleep(10);
+    }
+    cmpc(0);
+   	while(abs(gmpc(0))<cubepassline)
+    {
+        mav(rightwheel,-rightspeed);
+        mav(leftwheel,-leftspeed);
+        msleep(10);
+    }
+    cmpc(0);
+   	while(abs(gmpc(0))<turnleft)
+    {
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,-leftspeed);
         msleep(10);
     }
     cmpc(0);
@@ -186,73 +256,10 @@ int main()
         mav(leftwheel,leftspeed);
         msleep(10);
     }
-    	mav(rightwheel,rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    set_servo_position(claw,open);
-    	msleep(10);
-    set_servo_position(arm,up);
-    	mav(rightwheel,-rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    set_servo_position(arm,cube);
-    cmpc(0);
-    while(abs(gmpc(0))<lineupwithcube)
-    {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    cmpc(0);
-    while(abs(gmpc(0))<lineupwithcube)
-    {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    cmpc(0);
-    while(abs(gmpc(0))<turnleft)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    cmpc(0);
-    while(abs(gmpc(0))<getcube)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    }
-    set_servo_position(claw,close);
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    cmpc(0);
-   	while(abs(gmpc(0))<returntoline2)
-    {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    cmpc(0);
-    while(abs(gmpc(0))<stackcube)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    }
-    	mav(rightwheel,rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    set_servo_position(claw,open);
-    	msleep(10);
-    set_servo_position(arm,up);
-    	mav(rightwheel,-rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
+    set_servo_position(arm,stackheight);
+        msleep(50);
+    set_servo_position(claw,cubeopen);
+    	msleep(50);
+    set_servo_position(arm,abovecubes);
     return 0;
 }
