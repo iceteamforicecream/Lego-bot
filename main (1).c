@@ -16,19 +16,19 @@ int close=600;
 int open=50;
 int cubeclose=1700;
 int cubeopen=1180;
-int rightspeed=1000;
-int leftspeed=1000;
-int turnright=1220;
-int turnleft=1200;
+int rightspeed=800;
+int leftspeed=800;
+int turnright=1150;
+int turnleft=1150;
 int blackline=3850;
 int linedistance=14000;
-int lineupwithcube1=600;
-int lineupwithcube=1000;
-int lineupwithcube4=600;
-int getcube=3500;
+int lineupwithcube1=800;
+int lineupwithcube=1700;
+int lineupwithcube4=1000;
+int getcube=3550;
 int cubeonline=1000;
 int cubepassline=1200;
-int stackcube=4000;
+int stackcube=2000;
 
 int main()
 {
@@ -94,8 +94,8 @@ int main()
     cmpc(0);
     while(abs(gmpc(0))<turnright)
     {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,leftspeed);
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,-leftspeed);
         msleep(10);
     }
     while(analog(0)<blackline)
@@ -134,8 +134,8 @@ int main()
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,-leftspeed);
+        mav(rightwheel,-rightspeed);
+        mav(leftwheel,leftspeed);
         msleep(10);
     }
     cmpc(0);
@@ -148,8 +148,8 @@ int main()
     cmpc(0);
     while(abs(gmpc(0))<turnright)
     {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,leftspeed);
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,-leftspeed);
         msleep(10);
     }
     while(analog(0)<blackline)
@@ -183,11 +183,11 @@ int main()
     cmpc(0);
     while(abs(gmpc(0))<turnright)
     {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,leftspeed);
+        mav(rightwheel,rightspeed);
+        mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    ser_servo_position(arm,stackheight)
+    set_servo_position(arm,stackheight);
     cmpc(0);
     while(abs(gmpc(0))<stackcube)
     {
