@@ -32,7 +32,7 @@ int getcube=4200;
 int getcube4=3000;
 int cubeonline=1000;
 int cubepassline=1100;
-int gopassline=1200
+int gopassline=1200;
 int stackcube=2300;
 int stackcube4=2000;
 
