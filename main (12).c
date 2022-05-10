@@ -131,7 +131,7 @@ int main()
         msleep(50);
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
-        msleep(500);
+        msleep(600);
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
@@ -151,12 +151,6 @@ int main()
     {
         mav(rightwheel,rightspeed);
         mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
         msleep(10);
     }
     cmpc(0);
@@ -179,7 +173,7 @@ int main()
         msleep(50);
     	mav(rightwheel,-rightspeed);
         mav(leftwheel,-leftspeed);
-        msleep(500);
+        msleep(600);
     cmpc(0);
     while(abs(gmpc(0))<turnleft)
     {
@@ -201,12 +195,6 @@ int main()
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    }
     cmpc(0);
     while(abs(gmpc(0))<getcube)
     {
@@ -215,13 +203,7 @@ int main()
         msleep(10);
     }
     set_servo_position(claw,close);
-        msleep(50);
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,-rightspeed);
-        mav(leftwheel,-leftspeed);
-        msleep(10);
-    }
+        msleep(100);
     set_servo_position(arm,stackheight);
     cmpc(0);
    	while(abs(gmpc(0))<cubepassline)
@@ -237,7 +219,6 @@ int main()
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    set_servo_position(arm,stackheight);
     cmpc(0);
     while(abs(gmpc(0))<stackcube)
     {
@@ -252,6 +233,9 @@ int main()
         mav(leftwheel,leftspeed);
         msleep(10);
     }
+    mav(rightwheel,rightspeed);
+    mav(leftwheel,leftspeed);
+        msleep(500);
     	mav(rightwheel,0);
         mav(leftwheel,0);
     msleep(900);
@@ -283,13 +267,6 @@ int main()
         msleep(10);
     }
     set_servo_position(arm,cubeheight);
-        cmpc(0);
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    }
     cmpc(0);
    	while(abs(gmpc(0))<gopassline)
     {
