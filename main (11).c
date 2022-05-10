@@ -32,7 +32,7 @@ int getcube=5800;
 int getcube4=700;
 int cubeonline=5000;
 int cubepassline=5200;
-int gopassline=4800;
+int gopassline=5500;
 int stackcube=2200;
 int stackcube4=2000;
 
@@ -147,7 +147,7 @@ int main()
         msleep(10);
     }
     set_servo_position(claw,close);
-        msleep(50);
+        msleep(100);
     set_servo_position(arm,stackheight);
     cmpc(0);
    	while(abs(gmpc(0))<cubepassline)
@@ -163,7 +163,6 @@ int main()
         mav(leftwheel,-leftspeed);
         msleep(10);
     }
-    set_servo_position(arm,stackheight);
     cmpc(0);
     while(abs(gmpc(0))<stackcube)
     {
@@ -180,7 +179,7 @@ int main()
     }
     mav(rightwheel,rightspeed);
     mav(leftwheel,leftspeed);
-        msleep(100);
+        msleep(500);
     	mav(rightwheel,0);
         mav(leftwheel,0);
     msleep(900);
@@ -212,13 +211,6 @@ int main()
         msleep(10);
     }
     set_servo_position(arm,cubeheight);
-        cmpc(0);
-    while(analog(0)<blackline)
-    {
-        mav(rightwheel,rightspeed);
-        mav(leftwheel,leftspeed);
-        msleep(10);
-    }
     cmpc(0);
    	while(abs(gmpc(0))<gopassline)
     {
